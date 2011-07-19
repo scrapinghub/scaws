@@ -3,6 +3,7 @@ from zope.interface.verify import verifyObject
 
 from scrapy.interfaces import ISpiderQueue
 from scrapy.utils.test import assert_aws_environ
+from scaws.spiderqueue import SQSSpiderQueue
 
 class SQSSpiderQueueTest(unittest.TestCase):
 
@@ -10,7 +11,6 @@ class SQSSpiderQueueTest(unittest.TestCase):
         assert_aws_environ()
 
     def test_interface(self):
-        from scrapy.contrib.spiderqueue import SQSSpiderQueue
         verifyObject(ISpiderQueue, SQSSpiderQueue())
 
     # XXX: testing SQS queue operations is hard because there are long delays
