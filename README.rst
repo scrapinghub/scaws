@@ -8,7 +8,7 @@ AWS.
 Requirements
 ============
 
-* Scrapy 0.12 or above
+* Scrapy 0.13 or above
 * boto 1.8 or above
 
 Install

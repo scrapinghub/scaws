@@ -5,7 +5,7 @@ from boto.sqs.connection import SQSConnection
 from boto.sqs.message import Message
 from boto.sqs import regions
 
-from scrapy.interfaces import ISpiderQueue
+from scrapyd.interfaces import ISpiderQueue
 from scrapy.utils.py26 import json
 
 class SQSSpiderQueue(object):
@@ -13,9 +13,9 @@ class SQSSpiderQueue(object):
     implements(ISpiderQueue)
 
     def __init__(self, *a, **kw):
-        self.queue_name = kw.pop('queue_name', 'scrapy')
-        self.region_name = kw.pop('region_name', 'us-east-1')
-        self.visibility_timeout = kw.pop('visibility_timeout', 7200)
+        self.queue_name = kw.pop('queue_name', None) or 'scrapy'
+        self.region_name = kw.pop('region_name', None) or 'us-east-1'
+        self.visibility_timeout = kw.pop('visibility_timeout', None) or 7200
         self.aws_access_key_id = kw.pop('aws_access_key_id', None)
         self.aws_secret_access_key = kw.pop('aws_secret_access_key', None)
         self.region = self._get_region(self.region_name)

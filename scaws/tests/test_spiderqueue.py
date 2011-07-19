@@ -1,7 +1,7 @@
 from twisted.trial import unittest
 from zope.interface.verify import verifyObject
 
-from scrapy.interfaces import ISpiderQueue
+from scrapyd.interfaces import ISpiderQueue
 from scrapy.utils.test import assert_aws_environ
 from scaws.spiderqueue import SQSSpiderQueue
 
