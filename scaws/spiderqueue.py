@@ -6,7 +6,7 @@ from boto.sqs.message import Message
 from boto.sqs import regions
 
 from scrapyd.interfaces import ISpiderQueue
-from scrapy.utils.py26 import json
+import json
 
 class SQSSpiderQueue(object):
 
