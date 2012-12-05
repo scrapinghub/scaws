@@ -1,6 +1,6 @@
-=======
-scmongo
-=======
+=====
+scaws
+=====
 
 This project contains some components and extensions for using Scrapy on Amazon
 AWS.
@@ -28,6 +28,8 @@ A SQS backend spider queue.
 
 SimpleDB stats collector
 ------------------------
+
+Module: ``scaws.statscol``
 
 .. class:: SimpledbStatsCollector
 
