@@ -19,13 +19,6 @@ Download and run: ``python setup.py install``
 Available components
 ====================
 
-SQS spider queue
-----------------
-
-Module: ``scaws.spiderqueue``
-
-A SQS backend spider queue.
-
 SimpleDB stats collector
 ------------------------
 
