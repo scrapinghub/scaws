@@ -6,23 +6,22 @@ Requires the boto library: http://code.google.com/p/boto/
 
 from datetime import datetime
 
+import boto
 from twisted.internet import threads
+
 from scrapy.statscol import StatsCollector
 from scrapy import log
-from scrapy.conf import settings
 
 from scaws.utils import to_sdb_value
 
 class SimpledbStatsCollector(StatsCollector):
 
-    def __init__(self):
-        super(SimpledbStatsCollector, self).__init__()
-        self._sdbdomain = settings['STATS_SDB_DOMAIN']
-        self._access_key = settings['AWS_ACCESS_KEY_ID']
-        self._secret_key = settings['AWS_SECRET_ACCESS_KEY']
-
-        self._async = settings.getbool('STATS_SDB_ASYNC')
-        import boto
+    def __init__(self, crawler):
+        super(SimpledbStatsCollector, self).__init__(crawler)
+        self._sdbdomain = crawler.settings['STATS_SDB_DOMAIN']
+        self._access_key = crawler.settings['AWS_ACCESS_KEY_ID']
+        self._secret_key = crawler.settings['AWS_SECRET_ACCESS_KEY']
+        self._async = crawler.settings.getbool('STATS_SDB_ASYNC')
         self.connect_sdb = boto.connect_sdb
         self.connect_sdb(aws_access_key_id=self._access_key, aws_secret_access_key=self._secret_key).create_domain(self._sdbdomain)
 
